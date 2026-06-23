@@ -96,9 +96,8 @@ export default function Home() {
     <>
       <Navbar />
 
-      {/* Hero */}
+      {/* Hero — CENTER */}
       <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden">
-        {/* Grid background */}
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.03]"
           style={{
@@ -107,12 +106,9 @@ export default function Home() {
             backgroundSize: "64px 64px",
           }}
         />
-
-        {/* Gradient orb */}
         <div className="pointer-events-none absolute left-1/2 top-1/3 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/5 blur-[120px]" />
 
         <div className="relative mx-auto max-w-[800px] px-6 pt-24 pb-16 text-center lg:px-10">
-          {/* Eyebrow */}
           <div className="mb-6 flex items-center justify-center gap-3">
             <span className="h-px w-8 bg-primary/60" />
             <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.2em] text-muted">
@@ -121,7 +117,6 @@ export default function Home() {
             <span className="h-px w-8 bg-primary/60" />
           </div>
 
-          {/* Heading */}
           <h1
             className="mb-6 font-[family-name:var(--font-display)] text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.03em] text-foreground"
             style={{ textWrap: "balance" as const }}
@@ -131,7 +126,6 @@ export default function Home() {
             for AI models.
           </h1>
 
-          {/* Sub */}
           <p
             className="mx-auto mb-4 max-w-[520px] text-lg leading-relaxed text-muted"
             style={{ textWrap: "pretty" as const }}
@@ -140,7 +134,6 @@ export default function Home() {
             Access thousands of models with Solana micropayments.
           </p>
 
-          {/* CTAs */}
           <div className="mb-14 flex items-center justify-center gap-3">
             <Link
               href="/marketplace"
@@ -157,7 +150,6 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Stats */}
           <div className="grid grid-cols-2 justify-center gap-x-14 gap-y-5 sm:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label}>
@@ -171,15 +163,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features — Bento Grid */}
+      {/* Features — LEFT */}
       <section className="border-t border-border py-24">
-        <div className="mx-auto max-w-[1000px] px-6 text-center lg:px-10">
-          <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
-            Everything you need
-          </h2>
-          <p className="mx-auto mb-14 max-w-[400px] text-sm leading-relaxed text-muted">
-            From upload to monetization. The full lifecycle, on-chain.
-          </p>
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
+          <div className="mb-12 max-w-[480px]">
+            <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
+              Everything you need
+            </h2>
+            <p className="text-sm leading-relaxed text-muted">
+              From upload to monetization. The full lifecycle, on-chain.
+            </p>
+          </div>
 
           <div className="grid gap-[1px] bg-border sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
@@ -187,7 +181,7 @@ export default function Home() {
                 key={feature.title}
                 className="bg-background p-8 transition-colors hover:bg-surface"
               >
-                <feature.icon className="mx-auto mb-4 h-5 w-5 text-primary" />
+                <feature.icon className="mb-4 h-5 w-5 text-primary" />
                 <h3 className="mb-2 font-[family-name:var(--font-display)] text-base font-semibold text-foreground">
                   {feature.title}
                 </h3>
@@ -200,24 +194,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Models */}
+      {/* Featured Models — LEFT */}
       <section className="border-t border-border py-24">
-        <div className="mx-auto max-w-[800px] px-6 text-center lg:px-10">
-          <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
-            Trending models
-          </h2>
-          <p className="mb-10 text-sm text-muted">
-            Most accessed this week on Solana mainnet.
-          </p>
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
+          <div className="mb-8 flex items-end justify-between">
+            <div>
+              <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
+                Trending models
+              </h2>
+              <p className="text-sm text-muted">
+                Most accessed this week on Solana mainnet.
+              </p>
+            </div>
+            <Link
+              href="/marketplace"
+              className="hidden items-center gap-1 text-sm text-primary transition-colors hover:text-primary/80 sm:inline-flex"
+            >
+              View all <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
 
-          <div className="space-y-3">
+          <div className="grid gap-4 sm:grid-cols-2">
             {featuredModels.map((model) => (
               <Link
                 key={model.name}
                 href={`/model/${model.name.toLowerCase().replace(/\s+/g, "-")}`}
                 className="group flex items-center justify-between rounded-[var(--radius-md)] border border-border bg-surface p-5 transition-all hover:border-border-strong"
               >
-                <div className="flex-1 text-left">
+                <div className="flex-1">
                   <div className="mb-1 flex items-center gap-2">
                     <span className="font-[family-name:var(--font-display)] text-sm font-semibold text-foreground">
                       {model.name}
@@ -230,36 +234,40 @@ export default function Home() {
                     by {model.creator} · {model.calls} calls
                   </div>
                 </div>
-                <div className="flex items-center gap-6 text-right">
-                  <div className="text-xs text-warning">★ {model.rating}</div>
+                <div className="text-right">
                   <div className="font-[family-name:var(--font-mono)] text-sm font-medium text-foreground">
                     {model.price}
                   </div>
+                  <div className="text-xs text-warning">★ {model.rating}</div>
                 </div>
               </Link>
             ))}
           </div>
 
-          <Link
-            href="/marketplace"
-            className="mt-8 inline-flex items-center gap-1 text-sm text-primary transition-colors hover:text-primary/80"
-          >
-            View all models <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
+          <div className="mt-6 text-center sm:hidden">
+            <Link
+              href="/marketplace"
+              className="inline-flex items-center gap-1 text-sm text-primary"
+            >
+              View all models <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* How it Works */}
+      {/* How it Works — LEFT */}
       <section className="border-t border-border py-24">
-        <div className="mx-auto max-w-[900px] px-6 text-center lg:px-10">
-          <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
-            How it works
-          </h2>
-          <p className="mx-auto mb-14 max-w-[300px] text-sm leading-relaxed text-muted">
-            Three steps. No middleman.
-          </p>
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
+          <div className="mb-12 max-w-[480px]">
+            <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
+              How it works
+            </h2>
+            <p className="text-sm leading-relaxed text-muted">
+              Three steps. No middleman.
+            </p>
+          </div>
 
-          <div className="grid gap-10 sm:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-3">
             {[
               {
                 step: "01",
@@ -269,7 +277,7 @@ export default function Home() {
               {
                 step: "02",
                 title: "Benchmark",
-                desc: "Auto-benchmark runs standardized tests. Your model gets a performance score.",
+                desc: "Auto-benchmark runs standardized tests. Your model gets a performance score and ranking.",
               },
               {
                 step: "03",
@@ -277,14 +285,14 @@ export default function Home() {
                 desc: "Developers call your model via API. You earn SOL per call. Withdraw anytime.",
               },
             ].map((item) => (
-              <div key={item.step} className="text-center">
+              <div key={item.step}>
                 <div className="mb-4 font-[family-name:var(--font-mono)] text-4xl font-bold text-border">
                   {item.step}
                 </div>
                 <h3 className="mb-2 font-[family-name:var(--font-display)] text-lg font-semibold text-foreground">
                   {item.title}
                 </h3>
-                <p className="mx-auto max-w-[260px] text-sm leading-relaxed text-muted">
+                <p className="text-sm leading-relaxed text-muted">
                   {item.desc}
                 </p>
               </div>
@@ -293,18 +301,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA — LEFT */}
       <section className="border-t border-border py-24">
-        <div className="mx-auto max-w-[700px] px-6 text-center lg:px-10">
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
           <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-12 sm:p-16">
             <h2 className="mb-4 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
               Start building today
             </h2>
-            <p className="mx-auto mb-8 max-w-[380px] text-sm text-muted">
+            <p className="mb-8 max-w-[420px] text-sm text-muted">
               Deploy your first model in under 5 minutes. No credit card.
               Just SOL in your wallet.
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap gap-3">
               <Link
                 href="/dashboard"
                 className="inline-flex items-center gap-2 rounded-[var(--radius-sm)] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:brightness-110 active:scale-[0.97]"
@@ -323,10 +331,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer — LEFT */}
       <footer className="border-t border-border py-10">
-        <div className="mx-auto max-w-[800px] px-6 text-center lg:px-10">
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row">
             <span className="font-[family-name:var(--font-display)] text-sm font-semibold text-foreground">
               Model<span className="text-primary">X</span>
             </span>
