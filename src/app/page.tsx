@@ -163,17 +163,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features — LEFT */}
+      {/* Features — CENTER */}
       <section className="border-t border-border py-24">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
-          <div className="mb-12 max-w-[480px]">
-            <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
-              Everything you need
-            </h2>
-            <p className="text-sm leading-relaxed text-muted">
-              From upload to monetization. The full lifecycle, on-chain.
-            </p>
-          </div>
+        <div className="mx-auto max-w-[800px] px-6 text-center lg:px-10">
+          <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
+            Everything you need
+          </h2>
+          <p className="mx-auto mb-14 max-w-[400px] text-sm leading-relaxed text-muted">
+            From upload to monetization. The full lifecycle, on-chain.
+          </p>
 
           <div className="grid gap-[1px] bg-border sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
@@ -181,7 +179,7 @@ export default function Home() {
                 key={feature.title}
                 className="bg-background p-8 transition-colors hover:bg-surface"
               >
-                <feature.icon className="mb-4 h-5 w-5 text-primary" />
+                <feature.icon className="mx-auto mb-4 h-5 w-5 text-primary" />
                 <h3 className="mb-2 font-[family-name:var(--font-display)] text-base font-semibold text-foreground">
                   {feature.title}
                 </h3>
@@ -194,32 +192,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Models — LEFT */}
+      {/* Featured Models — CENTER */}
       <section className="border-t border-border py-24">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
-          <div className="mb-8 flex items-end justify-between">
-            <div>
-              <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
-                Trending models
-              </h2>
-              <p className="text-sm text-muted">
-                Most accessed this week on Solana mainnet.
-              </p>
-            </div>
-            <Link
-              href="/marketplace"
-              className="hidden items-center gap-1 text-sm text-primary transition-colors hover:text-primary/80 sm:inline-flex"
-            >
-              View all <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
+        <div className="mx-auto max-w-[800px] px-6 text-center lg:px-10">
+          <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
+            Trending models
+          </h2>
+          <p className="mb-10 text-sm text-muted">
+            Most accessed this week on Solana mainnet.
+          </p>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="space-y-3">
             {featuredModels.map((model) => (
               <Link
                 key={model.name}
                 href={`/model/${model.name.toLowerCase().replace(/\s+/g, "-")}`}
-                className="group flex items-center justify-between rounded-[var(--radius-md)] border border-border bg-surface p-5 transition-all hover:border-border-strong"
+                className="group flex items-center justify-between rounded-[var(--radius-md)] border border-border bg-surface p-5 text-left transition-all hover:border-border-strong"
               >
                 <div className="flex-1">
                   <div className="mb-1 flex items-center gap-2">
@@ -234,40 +222,36 @@ export default function Home() {
                     by {model.creator} · {model.calls} calls
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="flex items-center gap-6">
+                  <div className="text-xs text-warning">★ {model.rating}</div>
                   <div className="font-[family-name:var(--font-mono)] text-sm font-medium text-foreground">
                     {model.price}
                   </div>
-                  <div className="text-xs text-warning">★ {model.rating}</div>
                 </div>
               </Link>
             ))}
           </div>
 
-          <div className="mt-6 text-center sm:hidden">
-            <Link
-              href="/marketplace"
-              className="inline-flex items-center gap-1 text-sm text-primary"
-            >
-              View all models <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
+          <Link
+            href="/marketplace"
+            className="mt-8 inline-flex items-center gap-1 text-sm text-primary transition-colors hover:text-primary/80"
+          >
+            View all models <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
       </section>
 
-      {/* How it Works — LEFT */}
+      {/* How it Works — CENTER */}
       <section className="border-t border-border py-24">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
-          <div className="mb-12 max-w-[480px]">
-            <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
-              How it works
-            </h2>
-            <p className="text-sm leading-relaxed text-muted">
-              Three steps. No middleman.
-            </p>
-          </div>
+        <div className="mx-auto max-w-[800px] px-6 text-center lg:px-10">
+          <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
+            How it works
+          </h2>
+          <p className="mx-auto mb-14 max-w-[300px] text-sm leading-relaxed text-muted">
+            Three steps. No middleman.
+          </p>
 
-          <div className="grid gap-8 sm:grid-cols-3">
+          <div className="grid gap-10 sm:grid-cols-3">
             {[
               {
                 step: "01",
@@ -277,7 +261,7 @@ export default function Home() {
               {
                 step: "02",
                 title: "Benchmark",
-                desc: "Auto-benchmark runs standardized tests. Your model gets a performance score and ranking.",
+                desc: "Auto-benchmark runs standardized tests. Your model gets a performance score.",
               },
               {
                 step: "03",
@@ -285,14 +269,14 @@ export default function Home() {
                 desc: "Developers call your model via API. You earn SOL per call. Withdraw anytime.",
               },
             ].map((item) => (
-              <div key={item.step}>
+              <div key={item.step} className="text-center">
                 <div className="mb-4 font-[family-name:var(--font-mono)] text-4xl font-bold text-border">
                   {item.step}
                 </div>
                 <h3 className="mb-2 font-[family-name:var(--font-display)] text-lg font-semibold text-foreground">
                   {item.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-muted">
+                <p className="mx-auto max-w-[260px] text-sm leading-relaxed text-muted">
                   {item.desc}
                 </p>
               </div>
@@ -301,18 +285,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA — LEFT */}
+      {/* CTA — CENTER */}
       <section className="border-t border-border py-24">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
+        <div className="mx-auto max-w-[700px] px-6 text-center lg:px-10">
           <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-12 sm:p-16">
             <h2 className="mb-4 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
               Start building today
             </h2>
-            <p className="mb-8 max-w-[420px] text-sm text-muted">
+            <p className="mx-auto mb-8 max-w-[380px] text-sm text-muted">
               Deploy your first model in under 5 minutes. No credit card.
               Just SOL in your wallet.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap justify-center gap-3">
               <Link
                 href="/dashboard"
                 className="inline-flex items-center gap-2 rounded-[var(--radius-sm)] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:brightness-110 active:scale-[0.97]"
@@ -331,27 +315,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer — LEFT */}
+      {/* Footer — CENTER */}
       <footer className="border-t border-border py-10">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
-          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row">
-            <span className="font-[family-name:var(--font-display)] text-sm font-semibold text-foreground">
-              Model<span className="text-primary">X</span>
-            </span>
-            <div className="flex gap-6">
-              {["GitHub", "Discord", "Twitter"].map((link) => (
-                <span
-                  key={link}
-                  className="cursor-pointer text-xs text-muted-faint transition-colors hover:text-muted"
-                >
-                  {link}
-                </span>
-              ))}
-            </div>
-            <span className="text-xs text-muted-faint">
-              © 2026 ModelX. Built on Solana.
-            </span>
+        <div className="mx-auto max-w-[800px] px-6 text-center lg:px-10">
+          <span className="mb-4 inline-block font-[family-name:var(--font-display)] text-sm font-semibold text-foreground">
+            Model<span className="text-primary">X</span>
+          </span>
+          <div className="mb-4 flex justify-center gap-6">
+            {["GitHub", "Discord", "Twitter"].map((link) => (
+              <span
+                key={link}
+                className="cursor-pointer text-xs text-muted-faint transition-colors hover:text-muted"
+              >
+                {link}
+              </span>
+            ))}
           </div>
+          <span className="text-xs text-muted-faint">
+            © 2026 ModelX. Built on Solana.
+          </span>
         </div>
       </footer>
     </>
