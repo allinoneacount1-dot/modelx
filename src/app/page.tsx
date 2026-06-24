@@ -12,6 +12,10 @@ import {
   Copy,
   ChevronRight,
   Star,
+  ExternalLink,
+  BookOpen,
+  FileText,
+  Activity,
 } from "lucide-react";
 
 const stats = [
@@ -61,9 +65,9 @@ export default function Home() {
     <>
       <Navbar />
 
-      {/* Hero — Center */}
-      <section className="relative overflow-hidden pt-32 pb-20">
-        {/* Background gradient orbs */}
+      {/* Hero — CENTER */}
+      <section className="relative overflow-hidden pt-40 pb-24">
+        {/* Background */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[150px]" />
           <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(var(--color-border) 1px, transparent 1px), linear-gradient(90deg, var(--color-border) 1px, transparent 1px)", backgroundSize: "64px 64px" }} />
@@ -71,7 +75,7 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-[900px] px-6 text-center lg:px-10">
           {/* Eyebrow */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5">
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
             <span className="font-[family-name:var(--font-mono)] text-[11px] text-muted">
               Built on Solana · Mainnet Live
@@ -97,7 +101,7 @@ export default function Home() {
           </p>
 
           {/* CTAs */}
-          <div className="mb-10 flex items-center justify-center gap-3">
+          <div className="mb-12 flex items-center justify-center gap-3">
             <Link
               href="/marketplace"
               className="group inline-flex items-center gap-2 rounded-[var(--radius-sm)] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:brightness-110 active:scale-[0.97]"
@@ -113,7 +117,7 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Code Snippet Preview */}
+          {/* Code Snippet */}
           <div className="mx-auto max-w-[560px] overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface text-left">
             <div className="flex items-center gap-2 border-b border-border px-4 py-2.5">
               <Terminal className="h-3.5 w-3.5 text-muted-faint" />
@@ -124,7 +128,7 @@ export default function Home() {
                 <Copy className="h-3.5 w-3.5 text-muted-faint cursor-pointer hover:text-muted" />
               </div>
             </div>
-            <pre className="overflow-x-auto p-4 font-[family-name:var(--font-mono)] text-[13px] leading-relaxed">
+            <pre className="overflow-x-auto p-5 font-[family-name:var(--font-mono)] text-[13px] leading-relaxed">
               <span className="text-muted-faint">$</span>{" "}
               <span className="text-foreground">curl</span>{" "}
               <span className="text-primary">-X POST</span>{" "}
@@ -138,17 +142,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust Bar */}
-      <section className="border-y border-border py-8">
+      {/* Trust Bar — divider */}
+      <section className="border-y border-border py-10">
         <div className="mx-auto max-w-[900px] px-6 text-center lg:px-10">
-          <p className="mb-5 text-xs uppercase tracking-[0.15em] text-muted-faint">
+          <p className="mb-6 text-[11px] uppercase tracking-[0.2em] text-muted-faint">
             Trusted by developers building on
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
             {["Solana Foundation", "Helius", "Metaplex", "Phantom", "Jupiter"].map((name) => (
               <span
                 key={name}
-                className="font-[family-name:var(--font-display)] text-sm font-semibold text-border transition-colors hover:text-muted-faint"
+                className="font-[family-name:var(--font-display)] text-sm font-medium text-border transition-colors hover:text-muted-faint"
               >
                 {name}
               </span>
@@ -157,12 +161,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Dashboard Preview — Full Width Visual */}
-      <section className="py-24">
+      {/* Dashboard Preview */}
+      <section className="py-28">
         <div className="mx-auto max-w-[1000px] px-6 lg:px-10">
           <div className="overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface">
-            {/* Mock dashboard header */}
-            <div className="flex items-center justify-between border-b border-border px-5 py-3">
+            {/* Header */}
+            <div className="flex items-center justify-between border-b border-border px-6 py-3.5">
               <div className="flex items-center gap-3">
                 <span className="font-[family-name:var(--font-display)] text-sm font-semibold text-foreground">
                   Model<span className="text-primary">X</span>
@@ -180,49 +184,49 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Mock content */}
-            <div className="p-6">
-              {/* Stats row */}
-              <div className="mb-6 grid grid-cols-4 gap-3">
+            {/* Content */}
+            <div className="p-8">
+              {/* Stats */}
+              <div className="mb-8 grid grid-cols-4 gap-4">
                 {[
                   { label: "API Calls", value: "1.2M", trend: "+12%" },
                   { label: "Revenue", value: "2.4 SOL", trend: "+8%" },
                   { label: "Models", value: "3", trend: "" },
                   { label: "Avg Latency", value: "142ms", trend: "-15ms" },
                 ].map((s) => (
-                  <div key={s.label} className="rounded border border-border bg-background p-3">
-                    <div className="text-[10px] text-muted-faint">{s.label}</div>
-                    <div className="flex items-baseline gap-1.5">
-                      <span className="font-[family-name:var(--font-display)] text-lg font-bold text-foreground">
+                  <div key={s.label} className="rounded border border-border bg-background p-4">
+                    <div className="mb-1 text-[11px] text-muted-faint">{s.label}</div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-[family-name:var(--font-display)] text-xl font-bold text-foreground">
                         {s.value}
                       </span>
                       {s.trend && (
-                        <span className="text-[10px] text-success">{s.trend}</span>
+                        <span className="text-[11px] text-success">{s.trend}</span>
                       )}
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* Mock model list */}
-              <div className="space-y-2">
+              {/* Model list */}
+              <div className="space-y-3">
                 {[
                   { name: "Llama 3.1 70B", calls: "847K", revenue: "1.69 SOL", status: "active" },
                   { name: "Whisper v3", calls: "312K", revenue: "0.31 SOL", status: "active" },
                   { name: "SDXL Turbo", calls: "89K", revenue: "0.45 SOL", status: "active" },
                 ].map((m) => (
-                  <div key={m.name} className="flex items-center justify-between rounded border border-border bg-background px-4 py-2.5">
+                  <div key={m.name} className="flex items-center justify-between rounded border border-border bg-background px-5 py-3">
                     <div className="flex items-center gap-3">
                       <span className="h-2 w-2 rounded-full bg-success" />
-                      <span className="font-[family-name:var(--font-mono)] text-xs text-foreground">
+                      <span className="font-[family-name:var(--font-mono)] text-sm text-foreground">
                         {m.name}
                       </span>
                     </div>
-                    <div className="flex items-center gap-6">
-                      <span className="font-[family-name:var(--font-mono)] text-xs text-muted">
+                    <div className="flex items-center gap-8">
+                      <span className="font-[family-name:var(--font-mono)] text-sm text-muted">
                         {m.calls} calls
                       </span>
-                      <span className="font-[family-name:var(--font-mono)] text-xs text-primary">
+                      <span className="font-[family-name:var(--font-mono)] text-sm text-primary">
                         {m.revenue}
                       </span>
                     </div>
@@ -235,42 +239,42 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section className="border-y border-border py-16">
+      <section className="border-y border-border py-20">
         <div className="mx-auto max-w-[900px] px-6 lg:px-10">
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
+                <div className="font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight text-foreground">
                   {stat.value}
                 </div>
-                <div className="mt-1 text-xs text-muted-faint">{stat.label}</div>
+                <div className="mt-2 text-sm text-muted-faint">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features — Asymmetric Bento */}
-      <section className="py-24">
+      {/* Features — Bento */}
+      <section className="py-28">
         <div className="mx-auto max-w-[1000px] px-6 lg:px-10">
-          <div className="mb-14 text-center">
-            <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight text-foreground">
               Everything you need
             </h2>
-            <p className="mx-auto max-w-[400px] text-sm text-muted">
+            <p className="mx-auto max-w-[400px] text-base text-muted">
               From upload to monetization. The full lifecycle, on-chain.
             </p>
           </div>
 
           {/* Bento Grid */}
-          <div className="grid grid-cols-3 gap-3">
-            {/* Large card — spans 2 cols */}
-            <div className="col-span-2 rounded-[var(--radius-md)] border border-border bg-surface p-8 transition-colors hover:border-border-strong">
-              <Zap className="mb-4 h-5 w-5 text-primary" />
-              <h3 className="mb-2 font-[family-name:var(--font-display)] text-lg font-semibold text-foreground">
+          <div className="grid grid-cols-3 gap-4">
+            {/* Large card */}
+            <div className="col-span-2 rounded-[var(--radius-md)] border border-border bg-surface p-10 transition-colors hover:border-border-strong">
+              <Zap className="mb-5 h-6 w-6 text-primary" />
+              <h3 className="mb-3 font-[family-name:var(--font-display)] text-xl font-semibold text-foreground">
                 Auto-Benchmark
               </h3>
-              <p className="max-w-[400px] text-sm leading-relaxed text-muted">
+              <p className="max-w-[440px] text-base leading-relaxed text-muted">
                 Every model is tested against standardized benchmarks. Latency, accuracy, cost-efficiency — scored and ranked on-chain. No manual testing required.
               </p>
             </div>
@@ -278,7 +282,7 @@ export default function Home() {
             {/* Small card */}
             <div className="rounded-[var(--radius-md)] border border-border bg-surface p-8 transition-colors hover:border-border-strong">
               <Code2 className="mb-4 h-5 w-5 text-primary" />
-              <h3 className="mb-2 font-[family-name:var(--font-display)] text-base font-semibold text-foreground">
+              <h3 className="mb-2 font-[family-name:var(--font-display)] text-lg font-semibold text-foreground">
                 API Gateway
               </h3>
               <p className="text-sm leading-relaxed text-muted">
@@ -289,7 +293,7 @@ export default function Home() {
             {/* Small card */}
             <div className="rounded-[var(--radius-md)] border border-border bg-surface p-8 transition-colors hover:border-border-strong">
               <Shield className="mb-4 h-5 w-5 text-primary" />
-              <h3 className="mb-2 font-[family-name:var(--font-display)] text-base font-semibold text-foreground">
+              <h3 className="mb-2 font-[family-name:var(--font-display)] text-lg font-semibold text-foreground">
                 On-Chain Reputation
               </h3>
               <p className="text-sm leading-relaxed text-muted">
@@ -297,65 +301,65 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Large card — spans 2 cols */}
-            <div className="col-span-2 rounded-[var(--radius-md)] border border-border bg-surface p-8 transition-colors hover:border-border-strong">
-              <BarChart3 className="mb-4 h-5 w-5 text-primary" />
-              <h3 className="mb-2 font-[family-name:var(--font-display)] text-lg font-semibold text-foreground">
+            {/* Large card */}
+            <div className="col-span-2 rounded-[var(--radius-md)] border border-border bg-surface p-10 transition-colors hover:border-border-strong">
+              <BarChart3 className="mb-5 h-6 w-6 text-primary" />
+              <h3 className="mb-3 font-[family-name:var(--font-display)] text-xl font-semibold text-foreground">
                 Token Micropayment
               </h3>
-              <p className="max-w-[400px] text-sm leading-relaxed text-muted">
+              <p className="max-w-[440px] text-base leading-relaxed text-muted">
                 Pay per API call in SOL. No subscriptions, no minimums. Use a model once, pay once. Developer earns instantly to wallet.
               </p>
             </div>
           </div>
 
-          {/* Bottom row — 3 equal */}
-          <div className="mt-3 grid grid-cols-3 gap-3">
+          {/* Bottom row */}
+          <div className="mt-4 grid grid-cols-3 gap-4">
             {[
               { icon: Globe, title: "Open Ecosystem", desc: "Anyone can upload. Anyone can access. No gatekeepers." },
               { icon: Lock, title: "Zero-Trust", desc: "Smart contract escrow. Funds locked until API call completes." },
               { icon: Zap, title: "Instant Deploy", desc: "Upload model → get listed in minutes. No review queue." },
             ].map((f) => (
-              <div key={f.title} className="rounded-[var(--radius-md)] border border-border bg-surface p-6 transition-colors hover:border-border-strong">
-                <f.icon className="mb-3 h-4 w-4 text-primary" />
-                <h3 className="mb-1.5 font-[family-name:var(--font-display)] text-sm font-semibold text-foreground">
+              <div key={f.title} className="rounded-[var(--radius-md)] border border-border bg-surface p-7 transition-colors hover:border-border-strong">
+                <f.icon className="mb-4 h-5 w-5 text-primary" />
+                <h3 className="mb-2 font-[family-name:var(--font-display)] text-base font-semibold text-foreground">
                   {f.title}
                 </h3>
-                <p className="text-xs leading-relaxed text-muted">{f.desc}</p>
+                <p className="text-sm leading-relaxed text-muted">{f.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How it Works — Alternating Left/Right */}
-      <section className="border-y border-border py-24">
+      {/* How it Works — Alternating */}
+      <section className="border-y border-border py-28">
         <div className="mx-auto max-w-[1000px] px-6 lg:px-10">
-          <div className="mb-16 text-center">
-            <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
+          <div className="mb-20 text-center">
+            <h2 className="mb-4 font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight text-foreground">
               How it works
             </h2>
-            <p className="mx-auto max-w-[300px] text-sm text-muted">
+            <p className="mx-auto max-w-[300px] text-base text-muted">
               Three steps. No middleman.
             </p>
           </div>
 
-          <div className="space-y-16">
+          <div className="space-y-20">
             {/* Step 1 — Left */}
-            <div className="flex flex-col items-center gap-8 sm:flex-row sm:text-left">
+            <div className="flex flex-col items-center gap-10 sm:flex-row sm:text-left">
               <div className="flex-1">
-                <div className="mb-3 font-[family-name:var(--font-mono)] text-5xl font-bold text-border">
+                <div className="mb-4 font-[family-name:var(--font-mono)] text-3xl font-bold text-border">
                   01
                 </div>
-                <h3 className="mb-2 font-[family-name:var(--font-display)] text-xl font-semibold text-foreground">
+                <h3 className="mb-3 font-[family-name:var(--font-display)] text-2xl font-semibold text-foreground">
                   Upload
                 </h3>
-                <p className="max-w-[360px] text-sm leading-relaxed text-muted">
+                <p className="max-w-[380px] text-base leading-relaxed text-muted">
                   Push your model to IPFS. Set a price per API call. Get listed on-chain in minutes.
                 </p>
               </div>
-              <div className="flex-1 rounded-[var(--radius-md)] border border-border bg-surface p-6">
-                <div className="font-[family-name:var(--font-mono)] text-[13px] text-foreground/70">
+              <div className="flex-1 rounded-[var(--radius-md)] border border-border bg-surface p-8">
+                <div className="font-[family-name:var(--font-mono)] text-sm leading-loose text-foreground/70">
                   <span className="text-muted-faint">$</span> modelx upload{" "}
                   <span className="text-primary">./my-model</span>
                   <br />
@@ -369,33 +373,33 @@ export default function Home() {
             </div>
 
             {/* Step 2 — Right */}
-            <div className="flex flex-col items-center gap-8 sm:flex-row-reverse sm:text-left">
+            <div className="flex flex-col items-center gap-10 sm:flex-row-reverse sm:text-left">
               <div className="flex-1">
-                <div className="mb-3 font-[family-name:var(--font-mono)] text-5xl font-bold text-border">
+                <div className="mb-4 font-[family-name:var(--font-mono)] text-3xl font-bold text-border">
                   02
                 </div>
-                <h3 className="mb-2 font-[family-name:var(--font-display)] text-xl font-semibold text-foreground">
+                <h3 className="mb-3 font-[family-name:var(--font-display)] text-2xl font-semibold text-foreground">
                   Benchmark
                 </h3>
-                <p className="max-w-[360px] text-sm leading-relaxed text-muted">
+                <p className="max-w-[380px] text-base leading-relaxed text-muted">
                   Auto-benchmark runs standardized tests. Your model gets a performance score and on-chain ranking.
                 </p>
               </div>
-              <div className="flex-1 rounded-[var(--radius-md)] border border-border bg-surface p-6">
-                <div className="space-y-3">
+              <div className="flex-1 rounded-[var(--radius-md)] border border-border bg-surface p-8">
+                <div className="space-y-4">
                   {[
                     { label: "Latency", value: "142ms", bar: "85%" },
                     { label: "Accuracy", value: "94.2%", bar: "94%" },
                     { label: "Cost Efficiency", value: "A+", bar: "92%" },
                   ].map((b) => (
                     <div key={b.label}>
-                      <div className="mb-1 flex justify-between text-[11px]">
+                      <div className="mb-2 flex justify-between text-xs">
                         <span className="text-muted-faint">{b.label}</span>
                         <span className="font-[family-name:var(--font-mono)] text-foreground">
                           {b.value}
                         </span>
                       </div>
-                      <div className="h-1.5 overflow-hidden rounded-full bg-border">
+                      <div className="h-2 overflow-hidden rounded-full bg-border">
                         <div
                           className="h-full rounded-full bg-primary"
                           style={{ width: b.bar }}
@@ -408,32 +412,32 @@ export default function Home() {
             </div>
 
             {/* Step 3 — Left */}
-            <div className="flex flex-col items-center gap-8 sm:flex-row sm:text-left">
+            <div className="flex flex-col items-center gap-10 sm:flex-row sm:text-left">
               <div className="flex-1">
-                <div className="mb-3 font-[family-name:var(--font-mono)] text-5xl font-bold text-border">
+                <div className="mb-4 font-[family-name:var(--font-mono)] text-3xl font-bold text-border">
                   03
                 </div>
-                <h3 className="mb-2 font-[family-name:var(--font-display)] text-xl font-semibold text-foreground">
+                <h3 className="mb-3 font-[family-name:var(--font-display)] text-2xl font-semibold text-foreground">
                   Earn
                 </h3>
-                <p className="max-w-[360px] text-sm leading-relaxed text-muted">
+                <p className="max-w-[380px] text-base leading-relaxed text-muted">
                   Developers call your model via API. You earn SOL per call. Withdraw to your wallet anytime.
                 </p>
               </div>
-              <div className="flex-1 rounded-[var(--radius-md)] border border-border bg-surface p-6">
-                <div className="space-y-2">
+              <div className="flex-1 rounded-[var(--radius-md)] border border-border bg-surface p-8">
+                <div className="space-y-3">
                   {[
                     { model: "Llama 3.1 70B", calls: "2.4K today", earning: "+0.0048 SOL" },
                     { model: "Whisper v3", calls: "890 today", earning: "+0.0009 SOL" },
                     { model: "SDXL Turbo", calls: "156 today", earning: "+0.0008 SOL" },
                   ].map((e) => (
-                    <div key={e.model} className="flex items-center justify-between rounded border border-border bg-background px-3 py-2">
-                      <span className="font-[family-name:var(--font-mono)] text-[11px] text-foreground">
+                    <div key={e.model} className="flex items-center justify-between rounded border border-border bg-background px-4 py-3">
+                      <span className="font-[family-name:var(--font-mono)] text-sm text-foreground">
                         {e.model}
                       </span>
-                      <div className="flex items-center gap-3">
-                        <span className="text-[10px] text-muted-faint">{e.calls}</span>
-                        <span className="font-[family-name:var(--font-mono)] text-[11px] text-success">
+                      <div className="flex items-center gap-4">
+                        <span className="text-xs text-muted-faint">{e.calls}</span>
+                        <span className="font-[family-name:var(--font-mono)] text-sm text-success">
                           {e.earning}
                         </span>
                       </div>
@@ -447,28 +451,28 @@ export default function Home() {
       </section>
 
       {/* Trending Models */}
-      <section className="py-24">
+      <section className="py-28">
         <div className="mx-auto max-w-[900px] px-6 text-center lg:px-10">
-          <h2 className="mb-3 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
+          <h2 className="mb-4 font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight text-foreground">
             Trending models
           </h2>
-          <p className="mb-10 text-sm text-muted">
+          <p className="mb-12 text-base text-muted">
             Most accessed this week on Solana mainnet.
           </p>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {featuredModels.map((model) => (
               <Link
                 key={model.name}
                 href={`/model/${model.name.toLowerCase().replace(/\s+/g, "-")}`}
-                className="group flex items-center justify-between rounded-[var(--radius-md)] border border-border bg-surface p-5 text-left transition-all hover:border-border-strong"
+                className="group flex items-center justify-between rounded-[var(--radius-md)] border border-border bg-surface p-6 text-left transition-all hover:border-border-strong"
               >
                 <div className="flex-1">
-                  <div className="mb-1 flex items-center gap-2">
-                    <span className="font-[family-name:var(--font-display)] text-sm font-semibold text-foreground">
+                  <div className="mb-1.5 flex items-center gap-2">
+                    <span className="font-[family-name:var(--font-display)] text-base font-semibold text-foreground">
                       {model.name}
                     </span>
-                    <span className="rounded bg-primary-soft px-1.5 py-0.5 font-[family-name:var(--font-mono)] text-[10px] text-primary">
+                    <span className="rounded bg-primary-soft px-2 py-0.5 font-[family-name:var(--font-mono)] text-[10px] text-primary">
                       {model.task}
                     </span>
                   </div>
@@ -477,14 +481,14 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex items-center gap-6">
-                  <div className="flex items-center gap-1 text-xs text-warning">
-                    <Star className="h-3 w-3 fill-current" />
+                  <div className="flex items-center gap-1 text-sm text-warning">
+                    <Star className="h-3.5 w-3.5 fill-current" />
                     {model.rating}
                   </div>
-                  <div className="font-[family-name:var(--font-mono)] text-sm font-medium text-foreground">
+                  <div className="font-[family-name:var(--font-mono)] text-base font-medium text-foreground">
                     {model.price}
                   </div>
-                  <ChevronRight className="h-4 w-4 text-muted-faint transition-colors group-hover:text-primary" />
+                  <ChevronRight className="h-5 w-5 text-muted-faint transition-colors group-hover:text-primary" />
                 </div>
               </Link>
             ))}
@@ -492,34 +496,37 @@ export default function Home() {
 
           <Link
             href="/marketplace"
-            className="mt-8 inline-flex items-center gap-1 text-sm text-primary transition-colors hover:text-primary/80"
+            className="mt-10 inline-flex items-center gap-1.5 text-sm text-primary transition-colors hover:text-primary/80"
           >
-            View all models <ArrowRight className="h-3.5 w-3.5" />
+            View all models <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="border-y border-border py-24">
-        <div className="mx-auto max-w-[600px] px-6 text-center lg:px-10">
-          <h2 className="mb-4 font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight text-foreground">
+      {/* CTA — Bigger */}
+      <section className="border-y border-border py-28">
+        <div className="mx-auto max-w-[700px] px-6 text-center lg:px-10">
+          <div className="inline-flex mb-6 items-center justify-center rounded-full bg-primary/10 p-4">
+            <Zap className="h-8 w-8 text-primary" />
+          </div>
+          <h2 className="mb-5 font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight text-foreground">
             Start building today
           </h2>
-          <p className="mb-8 text-sm text-muted">
+          <p className="mb-10 text-base text-muted">
             Deploy your first model in under 5 minutes. No credit card.
             Just SOL in your wallet.
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/dashboard"
-              className="inline-flex items-center gap-2 rounded-[var(--radius-sm)] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:brightness-110 active:scale-[0.97]"
+              className="inline-flex items-center gap-2 rounded-[var(--radius-sm)] bg-primary px-8 py-3.5 text-sm font-medium text-primary-foreground transition-all hover:brightness-110 active:scale-[0.97]"
             >
               Upload a Model
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/marketplace"
-              className="inline-flex items-center gap-2 rounded-[var(--radius-sm)] border border-border bg-transparent px-6 py-3 text-sm text-muted transition-all hover:border-border-strong hover:text-foreground"
+              className="inline-flex items-center gap-2 rounded-[var(--radius-sm)] border border-border bg-transparent px-8 py-3.5 text-sm text-muted transition-all hover:border-border-strong hover:text-foreground"
             >
               Explore API Docs
             </Link>
@@ -527,25 +534,78 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-10">
-        <div className="mx-auto max-w-[900px] px-6 text-center lg:px-10">
-          <span className="mb-4 inline-block font-[family-name:var(--font-display)] text-sm font-semibold text-foreground">
-            Model<span className="text-primary">X</span>
-          </span>
-          <div className="mb-4 flex justify-center gap-6">
-            {["GitHub", "Discord", "Twitter"].map((link) => (
-              <span
-                key={link}
-                className="cursor-pointer text-xs text-muted-faint transition-colors hover:text-muted"
-              >
-                {link}
+      {/* Footer — Full */}
+      <footer className="py-14">
+        <div className="mx-auto max-w-[1000px] px-6 lg:px-10">
+          <div className="grid gap-10 sm:grid-cols-4">
+            {/* Brand */}
+            <div className="sm:col-span-1">
+              <span className="mb-3 inline-block font-[family-name:var(--font-display)] text-lg font-bold text-foreground">
+                Model<span className="text-primary">X</span>
               </span>
-            ))}
+              <p className="text-xs leading-relaxed text-muted-faint">
+                The decentralized marketplace for AI models on Solana.
+              </p>
+            </div>
+
+            {/* Product */}
+            <div>
+              <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-foreground">
+                Product
+              </h4>
+              <div className="space-y-2">
+                {["Marketplace", "Dashboard", "API Docs", "Pricing"].map((link) => (
+                  <span key={link} className="block cursor-pointer text-sm text-muted-faint transition-colors hover:text-muted">
+                    {link}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Developers */}
+            <div>
+              <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-foreground">
+                Developers
+              </h4>
+              <div className="space-y-2">
+                {["Documentation", "API Reference", "SDKs", "Status"].map((link) => (
+                  <span key={link} className="block cursor-pointer text-sm text-muted-faint transition-colors hover:text-muted">
+                    {link}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Company */}
+            <div>
+              <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-foreground">
+                Company
+              </h4>
+              <div className="space-y-2">
+                {["About", "Blog", "Terms", "Privacy"].map((link) => (
+                  <span key={link} className="block cursor-pointer text-sm text-muted-faint transition-colors hover:text-muted">
+                    {link}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
-          <span className="text-xs text-muted-faint">
-            © 2026 ModelX. Built on Solana.
-          </span>
+
+          <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
+            <span className="text-xs text-muted-faint">
+              © 2026 ModelX. Built on Solana.
+            </span>
+            <div className="flex gap-6">
+              {["GitHub", "Discord", "Twitter"].map((link) => (
+                <span
+                  key={link}
+                  className="cursor-pointer text-xs text-muted-faint transition-colors hover:text-muted"
+                >
+                  {link}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </footer>
     </>

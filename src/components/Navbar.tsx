@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import MobileMenu from "./MobileMenu";
 
 const navLinks = [
   { label: "Marketplace", href: "/marketplace" },
@@ -11,8 +10,6 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
@@ -53,49 +50,9 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Toggle */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-10 w-10 items-center justify-center md:hidden"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? (
-              <X className="h-5 w-5 text-foreground" />
-            ) : (
-              <Menu className="h-5 w-5 text-foreground" />
-            )}
-          </button>
+          {/* Mobile */}
+          <MobileMenu />
         </div>
-
-        {/* Mobile Menu */}
-        {mobileOpen && (
-          <div className="border-t border-border py-4 md:hidden">
-            <div className="flex flex-col items-center gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm text-muted transition-colors hover:text-foreground"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <div className="flex flex-col items-center gap-2 pt-2">
-                <button className="w-full rounded-[var(--radius-sm)] border border-border bg-transparent px-4 py-2.5 text-sm text-muted transition-colors hover:border-border-strong hover:text-foreground">
-                  Connect Wallet
-                </button>
-                <Link
-                  href="/marketplace"
-                  className="w-full rounded-[var(--radius-sm)] bg-primary px-4 py-2.5 text-center text-sm font-medium text-primary-foreground transition-all hover:brightness-110"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Get Started
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );
